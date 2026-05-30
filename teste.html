@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAFELINK - AVALIAÇÃO COMPLETA | Certificado de Segurança Digital</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style-teste.css">
+</head>
+<body>
+
+<div class="conteudo">
+    <a href="home.html" class="btn-voltar">← Voltar para o início</a>
+
+    <div class="teste-header">
+        <h1>🎓 AVALIAÇÃO COMPLETA</h1>
+        <p>Teste seus conhecimentos em Segurança Digital</p>
+        <div class="badge">📋 Banco com 50 questões | 🔀 10 sorteadas por vez</div>
+        <div class="info-sorteio">
+            <p>✨ A cada atualização da página, 10 novas perguntas são sorteadas!</p>
+            <p>🎯 Para ganhar o certificado: acerte 6 ou mais questões</p>
+            <button class="btn-atualizar" id="btn-sortear">🔄 Sortear novas perguntas</button>
+        </div>
+    </div>
+
+    <div id="quiz-container"></div>
+
+    <div class="progresso">
+        <div class="progresso-bar" id="progresso-bar"></div>
+    </div>
+
+    <div class="controles">
+        <button class="btn btn-secondary" id="btn-limpar" style="display: none;">🗑️ Limpar respostas</button>
+        <button class="btn btn-primary" id="btn-finalizar">📝 Finalizar e Ver Resultado</button>
+    </div>
+
+    <div class="resultado" id="resultado">
+        <h2>📊 RESULTADO</h2>
+        <div class="pontuacao" id="pontuacao">0 / 10</div>
+        <div class="mensagem-final" id="mensagem-final"></div>
+    </div>
+</div>
+
+<!-- Footer -->
+    <footer>
+    <p>Direitos reservados à: Breno Porto, Amazias Caldas e Marcelo Oliveira - Engenharia de Software IFAM- Campus Presidente FIgueiredo.</p>
+    <p style="margin-top: 10px; font-size: 0.9em;">Segurança digital para todos | Aprenda | Previna | Proteja</p>
+</footer>
+
+<script>
+    // ========== BANCO DE 50 QUESTÕES ==========
+    const bancoQuestoes = [
+        { texto: "Você recebe uma ligação dizendo que seu WhatsApp vai ser bloqueado e pedem o código que chegou por SMS. O que você faz?", opcoes: ["Passo o código rapidinho", "Pergunto quanto tempo demora", "Desligo na hora. NUNCA compartilho códigos", "Peço para falar com o gerente"], correta: 2, explicacao: "Isso é GOLPE! Nenhuma empresa pede códigos por telefone. Esse código serve para clonar seu WhatsApp.", pegadinha: false },
+        { texto: "Qual dessas opções é uma senha REALMENTE segura?", opcoes: ["123456", "data de nascimento do filho", "Meu cachorro Bob comeu meu chinelo em 1990#", "senha123"], correta: 2, explicacao: "A frase vira 'Mcbcmce1990#' - uma senha forte e fácil de lembrar!", pegadinha: false },
+        { texto: "Você está em um café e aparece um Wi-Fi grátis. O que você faz?", opcoes: ["Conecto e acesso meu banco", "Conecto e faço compras", "Conecto só para redes sociais", "NÃO acesso banco nem digito senhas em Wi-Fi público"], correta: 3, explicacao: "Wi-Fi público é perigoso! Use só seus dados móveis para coisas importantes.", pegadinha: false },
+        { texto: "Você recebe uma mensagem: 'Mãe, perdi meu celular, preciso de R$500 urgente'. O que fazer?", opcoes: ["Faço o Pix na hora", "Peço uma foto", "LIGO para o número antigo", "Mando o dobro"], correta: 2, explicacao: "Golpe do falso parente! SEMPRE ligue para o número antigo.", pegadinha: false },
+        { texto: "[PEGADINHA!] Anúncio: 'iPhone por R$500! Últimas unidades! Site tem cadeado 🔒'. O que fazer?", opcoes: ["Compro agora!", "Compro três", "DESCONFIO! Preço muito baixo é golpe", "Mando para amigos"], correta: 2, explicacao: "O cadeado significa conexão segura, mas NÃO que a loja é confiável!", pegadinha: true },
+        { texto: "Seu banco liga pedindo sua senha. O que fazer?", opcoes: ["Passo a senha", "Pergunto o saldo", "DESLIGO e ligo para o número do cartão", "Peço para falar com o gerente"], correta: 2, explicacao: "BANCO NUNCA LIGA PEDINDO SENHA!", pegadinha: false },
+        { texto: "Qual atitude protege seu celular se for roubado?", opcoes: ["Deixar Bluetooth ligado", "Anotar o IMEI e ativar o Encontre Meu Dispositivo", "Anotar senha na tela", "Não usar senha"], correta: 1, explicacao: "O IMEI é a identidade do celular. Anote ele!", pegadinha: false },
+        { texto: "[PEGADINHA!] App de 'aumentar velocidade' pede acesso a contatos e fotos. O que fazer?", opcoes: ["Permito tudo", "Permito só localização", "Desinstalo NA HORA!", "Permito e vejo depois"], correta: 2, explicacao: "App de 'aumentar velocidade' NÃO precisa dos seus contatos!", pegadinha: true },
+        { texto: "Fez um Pix para um golpista. O que fazer PRIMEIRO?", opcoes: ["Chorar", "Postar nas redes", "LIGAR para o banco e pedir o MED", "Dormir"], correta: 2, explicacao: "CORRA CONTRA O TEMPO! Ligue para o banco AGORA e solicite o MED.", pegadinha: false },
+        { texto: "[PEGADINHA!] Benefício do governo de R$5000 cobrando taxa de R$50. Site termina com .gov.br. O que fazer?", opcoes: ["Pago a taxa", "Pago metade", "NÃO PAGO! Governo nunca cobra taxa", "Peço desconto"], correta: 2, explicacao: "Governo NUNCA cobra taxa para liberar benefícios!", pegadinha: true },
+        { texto: "O que é verificação em duas etapas?", opcoes: ["Uma senha extra que só você tem", "Um vírus de computador", "Um tipo de golpe", "Um aplicativo de banco"], correta: 0, explicacao: "É como uma segunda fechadura na sua porta digital.", pegadinha: false },
+        { texto: "O que fazer se seu WhatsApp for clonado?", opcoes: ["Comprar outro celular", "Avise seus contatos e tente reconectar", "Ignorar", "Mudar de número"], correta: 1, explicacao: "Avise seus contatos e tente reconectar ao WhatsApp.", pegadinha: false },
+        { texto: "O que significa MED do Pix?", opcoes: ["Meio Especial Digital", "Mecanismo Especial de Devolução", "Método Eficaz Digital", "Medida Extra de Dados"], correta: 1, explicacao: "Mecanismo que pode devolver seu dinheiro se cair em golpe.", pegadinha: false },
+        { texto: "Qual número ligar em caso de emergência policial?", opcoes: ["191", "192", "193", "190"], correta: 3, explicacao: "190 é o número da Polícia para emergências.", pegadinha: false },
+        { texto: "O que fazer com link suspeito recebido?", opcoes: ["Clicar para ver", "Compartilhar", "Não clicar e perguntar para alguém de confiança", "Salvar para depois"], correta: 2, explicacao: "Na dúvida, não clique. Pergunte para alguém de confiança.", pegadinha: false },
+        { texto: "Onde NUNCA devemos digitar senhas?", opcoes: ["No app do banco", "No Wi-Fi público", "No celular em casa", "No computador do trabalho"], correta: 1, explicacao: "Wi-Fi público é perigoso! Criminosos podem capturar suas senhas.", pegadinha: false },
+        { texto: "O que é phishing?", opcoes: ["Um tipo de peixe", "Golpe que tenta enganar para roubar dados", "Um antivírus", "Uma rede social"], correta: 1, explicacao: "Phishing é golpe onde criminosos fingem ser empresa para roubar dados.", pegadinha: false },
+        { texto: "Como criar uma senha forte?", opcoes: ["Usar '123456'", "Usar data de nascimento", "Usar frase secreta com números e símbolos", "Usar 'senha'"], correta: 2, explicacao: "Use frases secretas que você lembra, com números e símbolos.", pegadinha: false },
+        { texto: "O que NÃO fazer em redes sociais?", opcoes: ["Postar foto de comida", "Postar que está viajando", "Curtir posts de amigos", "Compartilhar memes"], correta: 1, explicacao: "Não divulgue que está viajando - criminosos podem invadir sua casa.", pegadinha: false },
+        { texto: "Para que serve o 'Encontre Meu Dispositivo'?", opcoes: ["Achar promoções", "Localizar, bloquear ou apagar o celular roubado", "Encontrar amigos", "Fazer backup"], correta: 1, explicacao: "Permite localizar, bloquear ou apagar o celular remotamente.", pegadinha: false },
+        { texto: "O que fazer com e-mail de 'prêmio' que pede dados?", opcoes: ["Preencher", "Ignorar e denunciar como spam", "Compartilhar", "Responder pedindo mais informações"], correta: 1, explicacao: "Esses e-mails são golpes para roubar seus dados.", pegadinha: false },
+        { texto: "Qual a melhor forma de pagar em sites desconhecidos?", opcoes: ["Pix direto", "Transferência bancária", "Cartão virtual", "Dinheiro"], correta: 2, explicacao: "Cartão virtual é mais seguro - o código muda a cada compra.", pegadinha: false },
+        { texto: "O que fazer se perceber compra não autorizada no cartão?", opcoes: ["Ignorar", "Bloquear o cartão e contestar a compra com o banco", "Pagar mesmo assim", "Esperar cair na fatura"], correta: 1, explicacao: "Bloqueie o cartão IMEDIATAMENTE e conteste a compra.", pegadinha: false },
+        { texto: "Qual número do Disque Denúncia?", opcoes: ["190", "191", "181", "192"], correta: 2, explicacao: "181 é o número do Disque Denúncia.", pegadinha: false },
+        { texto: "O que é backup de dados?", opcoes: ["Um tipo de golpe", "Cópia de segurança de fotos e contatos", "Um antivírus", "Uma senha"], correta: 1, explicacao: "Backup é cópia de segurança para não perder seus dados.", pegadinha: false },
+        { texto: "Como ativar verificação em duas etapas no WhatsApp?", opcoes: ["Configurações > Conta > Confirmação em duas etapas", "Não é possível", "Só pagando", "Nas mensagens"], correta: 0, explicacao: "Vá em Configurações > Conta > Confirmação em duas etapas.", pegadinha: false },
+        { texto: "Número do Procon para reclamações?", opcoes: ["100", "151", "180", "190"], correta: 1, explicacao: "151 é o número do Procon.", pegadinha: false },
+        { texto: "O que fazer ao receber boleto suspeito por e-mail?", opcoes: ["Pagar", "Comparar com boleto anterior e verificar no app oficial", "Ignorar", "Imprimir"], correta: 1, explicacao: "Compare com boletos anteriores e verifique no app oficial.", pegadinha: false },
+        { texto: "Para que serve a SaferNet Brasil?", opcoes: ["Vender antivírus", "Denúncia de crimes online", "Banco digital", "Rede social"], correta: 1, explicacao: "SaferNet Brasil recebe denúncias de crimes online.", pegadinha: false },
+        { texto: "O que NÃO é um sinal de golpe?", opcoes: ["Preço muito baixo", "Urgência para decidir", "Site com CNPJ visível e reclamações recentes", "Pedido de código por telefone"], correta: 2, explicacao: "Site confiável tem CNPJ visível. Preço baixo e urgência são sinais de golpe.", pegadinha: false },
+        { texto: "Como proteger seu cartão de crédito online?", opcoes: ["Usar cartão virtual", "Tirar foto do cartão", "Compartilhar código de segurança", "Anotar senha no cartão"], correta: 0, explicacao: "Cartão virtual muda o código a cada compra, é mais seguro.", pegadinha: false },
+        { texto: "O que fazer se seu Facebook for hackeado?", opcoes: ["Criar novo perfil", "Ignorar", "Acessar facebook.com/hacked", "Esperar recuperar sozinho"], correta: 2, explicacao: "Acesse facebook.com/hacked e siga as instruções de recuperação.", pegadinha: false },
+        { texto: "Qual número do Banco Central para reclamações?", opcoes: ["145", "150", "155", "160"], correta: 0, explicacao: "145 é o número do Banco Central.", pegadinha: false },
+        { texto: "É seguro usar a mesma senha para tudo?", opcoes: ["Sim, é mais fácil", "Não, se uma conta for hackeada todas estarão em risco", "Sim, desde que seja forte", "Depende do site"], correta: 1, explicacao: "Se usar a mesma senha, o criminoso acessa todas as suas contas.", pegadinha: false },
+        { texto: "O que fazer ao receber ligação de 'central falsa' do banco?", opcoes: ["Passar dados", "Desligar e ligar para número oficial", "Transferir dinheiro", "Instalar app que pedem"], correta: 1, explicacao: "Desligue e ligue você mesmo para o número do seu cartão.", pegadinha: false },
+        { texto: "Por que atualizar aplicativos e sistema?", opcoes: ["Só para ter novidades", "Corrigir falhas de segurança", "Gastar dados móveis", "Não é necessário"], correta: 1, explicacao: "Atualizações corrigem falhas que criminosos exploram.", pegadinha: false },
+        { texto: "O que é site fake?", opcoes: ["Site verdadeiro", "Site criado para enganar e roubar dados", "Site do governo", "Site de notícias"], correta: 1, explicacao: "Sites falsos imitam lojas reais para roubar seus dados.", pegadinha: false },
+        { texto: "Como identificar site seguro?", opcoes: ["Tem muitas fotos", "Endereço começa with https:// e tem cadeado", "Tem comentários", "Cores bonitas"], correta: 1, explicacao: "https:// e o cadeado indicam conexão segura (mas não garantem que a loja é confiável).", pegadinha: false },
+        { texto: "O que fazer com SMS de 'prêmio' pedindo clique?", opcoes: ["Clicar rápido", "Não clicar e deletar", "Compartilhar", "Responder"], correta: 1, explicacao: "Esses SMS são golpes. Nunca clique em links suspeitos.", pegadinha: false },
+        { texto: "Qual a primeira ação se perder o celular?", opcoes: ["Comprar outro", "Ligar para operadora e bloquear chip", "Esperar alguém devolver", "Postar nas redes"], correta: 1, explicacao: "Ligue para sua operadora e bloqueie o chip imediatamente.", pegadinha: false },
+        { texto: "O que NÃO compartilhar online?", opcoes: ["Fotos de paisagem", "Foto do cartão de crédito", "Foto da comida", "Foto do seu pet"], correta: 1, explicacao: "Nunca compartilhe foto do seu cartão de crédito.", pegadinha: false },
+        { texto: "O que significa clonagem de WhatsApp?", opcoes: ["Ter dois WhatsApp", "Criminoso assumir sua conta", "App atualizar", "Trocar de número"], correta: 1, explicacao: "Clonagem é quando o criminoso assume sua conta e fala com seus contatos.", pegadinha: false },
+        { texto: "Número da Polícia para emergência?", opcoes: ["190", "191", "192", "193"], correta: 0, explicacao: "190 é Polícia, 191 é Polícia Rodoviária, 192 é SAMU, 193 é Bombeiros.", pegadinha: false },
+        { texto: "Como proteger suas fotos na nuvem?", opcoes: ["Não salvar nada", "Usar backup automático com senha forte", "Postar tudo público", "Não usar senha"], correta: 1, explicacao: "Backup com senha forte protege suas memórias.", pegadinha: false }
+    ];
+
+    // Gerenciamento de Estado Global
+    const AppState = {
+        perguntas: [],
+        respostas: [],
+        feedbackAtivo: [],
+        finalizado: false,
+        nota: 0,
+        NUM_QUESTOES: 10,
+        inicializado: false
+    };
+
+    function sortearPerguntas() {
+        try {
+            if (!bancoQuestoes || bancoQuestoes.length === 0) {
+                console.error("ERRO CRÍTICO: Banco de questões não encontrado ou vazio!");
+                return [];
+            }
+            const shuffled = [...bancoQuestoes];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            const selecionadas = shuffled.slice(0, AppState.NUM_QUESTOES);
+            console.log("Sorteio concluído. Total selecionado:", selecionadas.length);
+            return selecionadas;
+        } catch (error) {
+            console.error("Erro ao sortear perguntas:", error);
+            return [];
+        }
+    }
+
+    function inicializarQuiz() {
+        if (AppState.inicializado && !AppState.finalizado) {
+            console.log("Quiz já inicializado. Ignorando chamada redundante.");
+            // return; // Comentado para permitir que o botão "Sortear novas" funcione
+        }
+
+        try {
+            console.log("--- INICIANDO QUIZ ---");
+            AppState.perguntas = sortearPerguntas();
+            
+            if (AppState.perguntas.length === 0) {
+                console.error("Falha ao carregar questões. Abortando renderização.");
+                const container = document.getElementById('quiz-container');
+                if (container) container.innerHTML = '<p class="error">Erro ao carregar perguntas. Por favor, recarregue a página.</p>';
+                return;
+            }
+
+            AppState.respostas = new Array(AppState.perguntas.length).fill(null);
+            AppState.feedbackAtivo = new Array(AppState.perguntas.length).fill(null);
+            AppState.finalizado = false;
+            AppState.nota = 0;
+            AppState.inicializado = true;
+
+            // Resetar UI
+            const resultado = document.getElementById('resultado');
+            const btnFinalizar = document.getElementById('btn-finalizar');
+            const btnLimpar = document.getElementById('btn-limpar');
+            
+            if (resultado) resultado.style.display = 'none';
+            if (btnFinalizar) btnFinalizar.style.display = 'block';
+            if (btnLimpar) btnLimpar.style.display = 'none';
+
+            console.log("Estado inicializado com", AppState.perguntas.length, "questões.");
+            renderizarQuiz();
+        } catch (error) {
+            console.error("Erro fatal na inicialização:", error);
+        }
+    }
+
+    function renderizarQuiz() {
+        console.log("Iniciando renderização no DOM...");
+        const container = document.getElementById('quiz-container');
+        if (!container) {
+            console.error("ERRO: Elemento 'quiz-container' não existe no HTML!");
+            return;
+        }
+
+        try {
+            const fragment = document.createDocumentFragment();
+            
+            AppState.perguntas.forEach((pergunta, idx) => {
+                const card = document.createElement('div');
+                card.className = 'pergunta-card';
+                
+                card.innerHTML = `
+                    <div class="pergunta-header">
+                        <h3>
+                            <span class="pergunta-numero">Questão ${idx + 1}</span>
+                            ${pergunta.pegadinha ? '<span class="pegadinha-label">⚠️ PEGADINHA! ⚠️</span>' : ''}
+                        </h3>
+                    </div>
+                    <div class="pergunta-texto">${pergunta.texto}</div>
+                    <div class="opcoes"></div>
+                    <div class="feedback"></div>
+                `;
+                
+                const opcoesDiv = card.querySelector('.opcoes');
+                const letras = ['A', 'B', 'C', 'D'];
+                
+                pergunta.opcoes.forEach((opcao, optIdx) => {
+                    const opcaoDiv = document.createElement('div');
+                    opcaoDiv.className = 'opcao';
+                    
+                    if (AppState.respostas[idx] === optIdx && !AppState.finalizado) {
+                        opcaoDiv.classList.add('selected');
+                    }
+                    
+                    if (AppState.finalizado) {
+                        if (optIdx === pergunta.correta) {
+                            opcaoDiv.classList.add('correct');
+                        } else if (AppState.respostas[idx] === optIdx) {
+                            opcaoDiv.classList.add('wrong');
+                        }
+                    }
+                    
+                    opcaoDiv.innerHTML = `
+                        <div class="opcao-letter">${letras[optIdx]}</div>
+                        <div class="opcao-text">${opcao}</div>
+                    `;
+                    
+                    if (!AppState.finalizado) {
+                        opcaoDiv.onclick = () => selecionarResposta(idx, optIdx);
+                    }
+                    
+                    opcoesDiv.appendChild(opcaoDiv);
+                });
+                
+                if (AppState.finalizado) {
+                    const feedbackDiv = card.querySelector('.feedback');
+                    const isCorrect = AppState.respostas[idx] === pergunta.correta;
+                    const respondeu = AppState.respostas[idx] !== null;
+                    
+                    feedbackDiv.innerHTML = `
+                        <div class="${isCorrect ? 'feedback-certo' : 'feedback-errado'}">
+                            ${isCorrect ? '✅ Correto!' : (respondeu ? '❌ Incorreto!' : '⚠️ Não respondida')}
+                            <div style="margin-top: 5px;">${pergunta.explicacao}</div>
+                        </div>
+                    `;
+                }
+                
+                fragment.appendChild(card);
+            });
+            
+            container.innerHTML = '';
+            container.appendChild(fragment);
+            console.log("Renderização concluída com sucesso.");
+            
+            atualizarInterface();
+        } catch (error) {
+            console.error("Erro durante a renderização:", error);
+            container.innerHTML = '<p class="error">Ocorreu um erro ao exibir as questões. Tente recarregar.</p>';
+        }
+    }
+
+    function atualizarInterface() {
+        const respondidas = AppState.respostas.filter(r => r !== null).length;
+        const total = AppState.perguntas.length;
+        const progresso = total > 0 ? (respondidas / total) * 100 : 0;
+        
+        const barra = document.getElementById('progresso-bar');
+        if (barra) barra.style.width = `${progresso}%`;
+        
+        const btnLimpar = document.getElementById('btn-limpar');
+        if (btnLimpar) btnLimpar.style.display = respondidas > 0 && !AppState.finalizado ? 'block' : 'none';
+    }
+    
+    function selecionarResposta(perguntaIdx, opcaoIdx) {
+        if (AppState.finalizado) return;
+        AppState.respostas[perguntaIdx] = opcaoIdx;
+        renderizarQuiz();
+    }
+    
+    function limparTodas() {
+        if (AppState.finalizado) return;
+        AppState.respostas = new Array(AppState.perguntas.length).fill(null);
+        AppState.feedbackAtivo = new Array(AppState.perguntas.length).fill(null);
+        renderizarQuiz();
+    }
+    
+    function calcularNota() {
+        let acertos = 0;
+        AppState.perguntas.forEach((pergunta, idx) => {
+            if (AppState.respostas[idx] === pergunta.correta) acertos++;
+        });
+        return acertos;
+    }
+    
+    function mostrarResultado() {
+        const acertos = calcularNota();
+        AppState.nota = acertos;
+        const total = AppState.perguntas.length;
+        const porcentagem = total > 0 ? (acertos / total) * 100 : 0;
+        
+        const resultadoDiv = document.getElementById('resultado');
+        const pontuacaoSpan = document.getElementById('pontuacao');
+        const mensagemSpan = document.getElementById('mensagem-final');
+        
+        if (pontuacaoSpan) {
+            pontuacaoSpan.innerHTML = `
+                <div style="font-size: 0.8em; color: #666;">Você acertou</div>
+                ${acertos} de ${total}
+                <div style="font-size: 0.6em; margin-top: 5px;">(${porcentagem.toFixed(0)}%)</div>
+            `;
+        }
+        
+        if (mensagemSpan) {
+            if (porcentagem >= 80) {
+                mensagemSpan.innerHTML = '🏆 EXCELENTE! Você é um expert em segurança digital!';
+                mensagemSpan.style.color = '#2e7d32';
+            } else if (porcentagem >= 60) {
+                mensagemSpan.innerHTML = '🎓 PARABÉNS! Você foi aprovado e demonstrou bons conhecimentos!';
+                mensagemSpan.style.color = '#ef6c00';
+            } else {
+                mensagemSpan.innerHTML = '📚 Não foi desta vez. Estude mais os materiais do SAFELINK e tente novamente!';
+                mensagemSpan.style.color = '#c62828';
+            }
+        }
+        
+        if (resultadoDiv) {
+            resultadoDiv.style.display = 'block';
+            resultadoDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+    
+    function finalizarTeste() {
+        const respondidas = AppState.respostas.filter(r => r !== null).length;
+        const total = AppState.perguntas.length;
+        
+        if (respondidas < total) {
+            const falta = total - respondidas;
+            if (!confirm(`Você ainda não respondeu ${falta} questão(ões). Deseja finalizar mesmo assim?\n\n(As questões não respondidas serão consideradas incorretas)`)) return;
+        }
+        
+        AppState.finalizado = true;
+        mostrarResultado();
+        renderizarQuiz();
+        
+        const btnFinalizar = document.getElementById('btn-finalizar');
+        if (btnFinalizar) btnFinalizar.style.display = 'none';
+        
+        const btnLimpar = document.getElementById('btn-limpar');
+        if (btnLimpar) btnLimpar.style.display = 'none';
+        
+        const porcentagem = (AppState.nota / total) * 100;
+        if (porcentagem >= 60) {
+            // Salvar dados e redirecionar para a nova página do certificado
+            localStorage.setItem('safelink_nota', AppState.nota);
+            localStorage.setItem('safelink_total', total);
+            
+            setTimeout(() => {
+                alert('🎉 Parabéns! Você foi aprovado!\nRedirecionando para a página do seu certificado...');
+                window.location.href = 'certificado.html';
+            }, 1000);
+        }
+    }
+    
+    // ========== FUNÇÕES DE TESTE (VALIDAÇÃO INTERNA) ==========
+    const Tests = {
+        runAll() {
+            console.group("🚀 Iniciando Testes de Validação");
+            try {
+                this.testShuffle();
+                this.testNotaCalculation();
+                console.log("✅ Testes automatizados concluídos.");
+            } catch (error) {
+                console.error("❌ Erro durante a execução dos testes:", error);
+            } finally {
+                console.groupEnd();
+                // A inicialização agora acontece no final do window.onload ou diretamente
+            }
+        },
+        testShuffle() {
+            const p1 = sortearPerguntas();
+            const p2 = sortearPerguntas();
+            const isDifferent = JSON.stringify(p1) !== JSON.stringify(p2);
+            if (!isDifferent) throw new Error("Shuffle falhou: Sorteios iguais");
+            console.log("✅ Teste Shuffle: Passou");
+        },
+        testNotaCalculation() {
+            const backupPerguntas = AppState.perguntas;
+            const backupRespostas = AppState.respostas;
+            AppState.perguntas = [{ correta: 0 }, { correta: 1 }, { correta: 2 }];
+            AppState.respostas = [0, 1, 0];
+            const nota = calcularNota();
+            AppState.perguntas = backupPerguntas;
+            AppState.respostas = backupRespostas;
+            if (nota !== 2) throw new Error(`Nota calculada incorretamente: ${nota}`);
+            console.log("✅ Teste Nota: Passou");
+        }
+    };
+
+    // Inicialização
+    function iniciarTudo() {
+        console.log("DOM pronto. Configurando eventos...");
+        
+        const listeners = [
+            { id: 'btn-sortear', event: 'click', handler: inicializarQuiz },
+            { id: 'btn-limpar', event: 'click', handler: limparTodas },
+            { id: 'btn-finalizar', event: 'click', handler: finalizarTeste },
+            { id: 'btn-fechar-modal', event: 'click', handler: () => {
+                const modal = document.getElementById('modal-certificado');
+                if (modal) modal.style.display = 'none';
+            }}
+        ];
+
+        listeners.forEach(l => {
+            const el = document.getElementById(l.id);
+            if (el) {
+                el.addEventListener(l.event, l.handler);
+            } else {
+                console.warn(`Aviso: Botão '${l.id}' não encontrado.`);
+            }
+        });
+
+        const inputNome = document.getElementById('nome-participante');
+        if (inputNome) {
+            inputNome.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') gerarCertificado();
+            });
+        }
+
+        // Executar testes e inicializar
+        Tests.runAll();
+        inicializarQuiz();
+    }
+
+    // Garantir que a inicialização ocorra
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        iniciarTudo();
+    } else {
+        window.addEventListener('DOMContentLoaded', iniciarTudo);
+    }
+    
+</script>
+</body>
+</html>
+
