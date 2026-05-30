@@ -118,6 +118,23 @@ section h1 {
     line-height: 1.2;
 }
 
+
+.btn-voltar {
+    display: inline-block;
+    background: linear-gradient(135deg, #c1c3cc 0%, #56515a 100%);
+    color: white;
+    text-decoration: none;
+    padding: 12px 30px;
+    
+    margin: 20px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-align: center;
+    }
+.btn-voltar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
 section p {
     margin-bottom: 15px;
     line-height: 1.6;
