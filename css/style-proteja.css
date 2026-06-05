@@ -8,6 +8,8 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
+            margin: 20px;
+            padding: 10px;
         }
 
         /* HEADER */
@@ -94,6 +96,7 @@
         /* HERO SECTION */
         .hero {
             background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+            border-radius: 15px;
             padding: 50px 40px;
             color: white;
             margin-bottom: 30px;
@@ -119,6 +122,7 @@
             color: white;
             text-decoration: none;
             padding: 12px 30px;
+            border-radius: 10px;
             margin: 20px 0;
             transition: all 0.3s ease;
             font-weight: 600;
@@ -133,14 +137,16 @@
         /* CARDS DE AULAS */
         .aula-card {
             background: white;
+            border-radius: 20px;
             margin-bottom: 30px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .aula-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .aula-header {
@@ -159,6 +165,7 @@
         .aula-header .numero-aula {
             background: rgba(255, 255, 255, 0.3);
             padding: 5px 15px;
+            border-radius: 10px;
             font-size: 0.8em;
         }
 
@@ -185,8 +192,10 @@
         /* PASSO A PASSO - EMERGÊNCIA */
         .emergencia-passo {
             background: linear-gradient(135deg, #FFF5F5 0%, #FFE0E0 100%);
+            border-radius: 15px;
             margin: 15px 0;
             padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .emergencia-passo .passo-titulo {
@@ -203,8 +212,12 @@
         /* TABELA DE CONTATOS */
         .tabela-contatos {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 15px;
+            overflow: hidden;
             margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .tabela-contatos th, .tabela-contatos td {
@@ -233,7 +246,15 @@
 
         .banco-card {
             background: #f8f9fa;
+            border-radius: 15px;
             padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .banco-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .banco-card strong {
@@ -259,8 +280,16 @@
         .operadora-card {
             background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
             color: white;
+            border-radius: 15px;
             padding: 15px;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .operadora-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .operadora-card h4 {
@@ -284,7 +313,15 @@
 
         .recuperacao-card {
             background: #f8f9fa;
+            border-radius: 15px;
             padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .recuperacao-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .recuperacao-card h4 {
@@ -304,6 +341,7 @@
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
+            border-radius: 15px;
             margin: 20px 0;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             background: #000;
@@ -341,9 +379,11 @@
         /* CAIXA DO MED */
         .med-box {
             background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            border-radius: 15px;
             padding: 20px;
             margin: 20px 0;
             border: 2px solid #1565C0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .med-box h4 {
@@ -352,12 +392,28 @@
             margin-bottom: 10px;
         }
 
+        .alerta-box {
+            background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .alerta-box h4 {
+            color: #c62828;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
         /* CAIXA EMOCIONAL */
         .emocional-box {
             background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%);
+            border-radius: 15px;
             padding: 20px;
             margin: 20px 0;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .sentimentos {
@@ -370,16 +426,20 @@
 
         .sentimento {
             background: white;
+            border-radius: 10px;
             padding: 10px 20px;
             font-weight: bold;
             color: #7B1FA2;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         /* CAIXA DE REFORÇO */
         .reforco-box {
             background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            border-radius: 15px;
             padding: 20px;
             margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .reforco-box h4 {
@@ -395,6 +455,7 @@
             text-align: center;
             padding: 25px;
             margin-top: 40px;
+            border-radius: 15px;
         }
 
         /* RESPONSIVIDADE */
