@@ -237,4 +237,12 @@ footer {
     .teste {
         grid-column: 1; 
     }
+    html{
+        font-size: 70%;
+    }
+}
+@media (max-width: 400px) {
+    html{
+        font-size: 50%;
+    }
 }
