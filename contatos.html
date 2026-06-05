@@ -5,66 +5,210 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAFELINK - Contatos</title>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Aldrich', sans-serif, Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: rgb(232, 233, 233);
+            color: #333;
+            margin: 20px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            min-height: 95vh;
+        }
+
+        .container {
+            flex: 1;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 10px 0;
+        }
+
+        .btn-voltar {
+            display: inline-block;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .btn-voltar:hover {
+            background-color: rgb(110, 131, 131);
+            color: white;
+        }
+
+        aside {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+        }
+
+        aside h3 {
+            color: #333;
+            font-size: 22px;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #28A745;
+            padding-bottom: 10px;
+        }
+
+        .contato {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .contato:last-of-type {
+            border-bottom: none;
+        }
+
+        .contato strong {
+            color: #333;
+            font-size: 15px;
+            flex: 1;
+            padding-right: 15px;
+        }
+
+        .contato span {
+            background-color: rgb(232, 233, 233);
+            color: #333;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 13px;
+            white-sizing: nowrap;
+        }
+
+        .contato a {
+            text-decoration: none;
+        }
+
+        .contato a span {
+            background-color: #28A745;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .contato a:hover span {
+            background-color: rgb(110, 131, 131);
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 12px;
+            color: #555;
+            border-top: 1px solid #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .contato {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .contato span, .contato a {
+                align-self: flex-start;
+            }
+
+            html {
+                font-size: 70%;
+            }
+        }
+
+        @media (max-width: 400px) {
+            html {
+                font-size: 50%;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="back">
+    <div class="container">
+        
         <a href="home.html" class="btn-voltar">← Voltar para o início</a>
-    
 
-     <aside>
-        <h3>Canais de Atendimento</h3>
+        <aside>
+            <h3>Canais de Atendimento</h3>
 
-        <div class="contato">
-            <strong>Polícia (emergência)</strong>
-            <span>190</span>
-        </div>
+            <div class="contato">
+                <strong>Polícia (emergência)</strong>
+                <span>190</span>
+            </div>
 
-        <div class="contato">
-            <strong>Disque Denúncia</strong>
-            <span>181</span>
-        </div>
+            <div class="contato">
+                <strong>Disque Denúncia</strong>
+                <span>181</span>
+            </div>
 
-        <div class="contato">
-            <strong>Delegacia de Crimes Cibernéticos</strong>
-            <span>Verifique a da sua região</span>
-        </div>
+            <div class="contato">
+                <strong>Delegacia Cibernética - DECC AM (Telefone)</strong>
+                <span>(92) 99962-2371</span>
+            </div>
 
-        <div class="contato">
-            <strong>Procon</strong>
-            <span>151</span>
-        </div>
+            <div class="contato">
+                <strong>Delegacia Virtual do Amazonas (B.O. Online)</strong>
+                <a href="https://delegaciavirtual.sinesp.gov.br/" target="_blank"><span>delegaciavirtual.sinesp.gov.br</span></a>
+            </div>
 
-        <div class="contato">
-            <strong>Banco Central</strong>
-            <span>145</span>
-        </div>
+            <div class="contato">
+                <strong>Procon Amazonas</strong>
+                <span>151</span>
+            </div>
 
-        <div class="contato">
-            <strong>Consumidor.gov.br</strong>
-            <a href="https://www.consumidor.gov.br/pages/principal/?1777421372982" title='acessar o site'><span>www.consumidor.gov.br</span></a>
-        </div>
+            <div class="contato">
+                <strong>Banco Central (Reclamações Bancárias)</strong>
+                <span>145</span>
+            </div>
 
-        <div class="contato">
-            <strong>SaferNet Brasil</strong>
-            <a href="www.denunciar.org.br" title='acessar o site'><span>www.safernet.org.br</span></a>
-        </div>
+            <div class="contato">
+                <strong>Registrato (Consultar uso indevido do CPF)</strong>
+                <a href="https://registrato.bcb.gov.br/" target="_blank"><span>registrato.bcb.gov.br</span></a>
+            </div>
 
-        <div class="contato">
-            <strong>Denúncias de Cibercrimes</strong>
-            <a href="www.denunciar.org.br" title='acessar o site'><span>www.denunciar.org.br</span></a>
-        </div>
+            <div class="contato">
+                <strong>Consumidor.gov.br (Problemas com Empresas)</strong>
+                <a href="https://www.consumidor.gov.br/" target="_blank"><span>www.consumidor.gov.br</span></a>
+            </div>
 
-    </aside>
-    
+            <div class="contato">
+                <strong>Segurança da Conta GOV.BR (Evitar Invasões)</strong>
+                <a href="https://www.gov.br/governodigital/pt-br/seguranca-da-informacao/conta-govbr-mais-segura" target="_blank"><span>acessar o guia</span></a>
+            </div>
 
-</div>
+            <div class="contato">
+                <strong>FalaBR - Ouvidoria Geral do Estado do Amazonas</strong>
+                <a href="https://falabr.cgu.gov.br/" target="_blank"><span>falabr.cgu.gov.br</span></a>
+            </div>
 
-<footer>
-    <p>Direitos reservados à: Breno Porto, Amazias Caldas e Marcelo Oliveira - Engenharia de Software IFAM- Campus Presidente FIgueiredo.</p>
-</footer>
+        </aside>
+        
+    </div>
+
+    <footer>
+        <p>Direitos reservados à: Breno Porto, Amazias Caldas e Marcelo Oliveira - Engenharia de Software IFAM - Campus Presidente Figueiredo.</p>
+    </footer>
 
 </body>
 </html>
