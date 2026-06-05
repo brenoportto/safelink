@@ -7,7 +7,7 @@ body {
 
 header {
     background-image:
-    linear-gradient(rgba(102, 116, 102, 0.89), rgba(0, 0, 0, 0.651)),
+    linear-gradient(rgba(102, 116, 102, 0), rgba(0, 0, 0, 0)),
     url('../img/logo.png');
 
     color: rgb(255, 255, 255);
@@ -34,31 +34,34 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 600px;
 }
 
 a {
     width: 300px;
-
+    background-color: rgba(193, 185, 131, 0.136);
+    text-decoration: none;
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    background-color: #d9e2eb;
-    text-decoration: none;
-    color: #000000;
-
     font-size: 120%;
     font-weight: 600;
-
     padding: 15px 20px;
     border-radius: 10px;
-
     transition: all 0.3s ease;
+    animation: pular 1s infinite;
+}
+@keyframes pular {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
 }
 
 .iniciar a:hover {
+    background-color: rgb(110, 131, 131);
+    border-radius: 10px;
     color: #0b325c;
-    background: rgba(26, 0, 0, 0.1);
     transform: translateY(-2px);
 }
 @media (max-width: 768px) {
@@ -70,12 +73,16 @@ a {
     a {
         width: 80%;
         font-size: 100%;
+
+    }
+    .iniciar {
+        padding-top: 0px;
     }
 header {
     height: 100vh;
 
     background-image:
-        linear-gradient(rgba(102, 116, 102, 0.89), rgba(0, 0, 0, 0.651)),
+        linear-gradient(rgba(102, 116, 102, 0), rgba(0, 0, 0, 0)),
         url('../img/logo3.png');
 
     background-size: cover;
