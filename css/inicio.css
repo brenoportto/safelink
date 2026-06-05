@@ -61,3 +61,26 @@ a {
     background: rgba(26, 0, 0, 0.1);
     transform: translateY(-2px);
 }
+@media (max-width: 768px) {
+    header {
+        font-size: 2rem;
+        padding: 20px;
+    }
+
+    a {
+        width: 80%;
+        font-size: 100%;
+    }
+header {
+    height: 100vh;
+
+    background-image:
+        linear-gradient(rgba(102, 116, 102, 0.89), rgba(0, 0, 0, 0.651)),
+        url('../img/logo3.png');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+}
