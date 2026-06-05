@@ -17,7 +17,6 @@
             min-height: 100vh; 
         }
         
-        /* Estilo da área de entrada (não aparece na impressão) */
         .input-area {
             background: white;
             padding: 30px;
@@ -61,7 +60,6 @@
             transform: scale(1.05);
         }
 
-        /* Estilo do Logo no Certificado */
         .logo-container {
             display: flex;
             align-items: center;
@@ -101,9 +99,8 @@
             line-height: 1.2;
         }
 
-        /* Estilo do Certificado */
         .certificado-container { 
-            width: 1000px; /* Aumentado para preencher a largura horizontal */
+            width: 1000px;
             max-width: 95vw;
             padding: 10px 20px; 
             background: white; 
@@ -111,7 +108,7 @@
             border-radius: 5px; 
             text-align: center; 
             box-shadow: 0 0 30px rgba(0,0,0,0.1); 
-            display: none; /* Escondido até gerar */
+            display: none;
             position: relative;
             box-sizing: border-box;
         }
@@ -192,11 +189,9 @@
     </div>
 
     <script>
-        // Recuperar dados do localStorage
         const nota = localStorage.getItem('safelink_nota');
         const total = localStorage.getItem('safelink_total');
 
-        // Se não houver dados, redirecionar de volta
         if (!nota || !total) {
             alert('Nenhum resultado encontrado. Por favor, complete o teste primeiro.');
             window.location.href = 'teste.html';
@@ -211,7 +206,6 @@
                 return;
             }
 
-            // Preencher os dados no certificado
             document.getElementById('display-nome').textContent = nome;
             document.getElementById('display-nota').textContent = `Nota: ${nota} / ${total}`;
             
@@ -221,14 +215,11 @@
             const dataAtual = new Date().toLocaleDateString('pt-BR');
             document.getElementById('display-data').textContent = `Emitido em ${dataAtual}`;
 
-            // Mostrar certificado e esconder entrada
             document.getElementById('input-area').style.display = 'none';
             document.getElementById('certificado').style.display = 'block';
 
-            // Abrir diálogo de impressão
             setTimeout(() => {
                 window.print();
-                // Opcional: mostrar botão de voltar após imprimir
                 const btn = document.createElement('button');
                 btn.className = 'btn-gerar';
                 btn.style.marginTop = '20px';
@@ -239,7 +230,6 @@
             }, 500);
         }
 
-        // Permitir Enter no input
         document.getElementById('nome-usuario').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') gerarCertificado();
         });

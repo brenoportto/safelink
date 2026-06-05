@@ -10,7 +10,6 @@
             min-height: 100vh;
         }
 
-        /* HEADER */
         header {
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
             border: none;
@@ -49,7 +48,6 @@
             transform: translateY(-2px);
         }
 
-        /* LOGO */
         .logo {
             width: 30%;
             transition: transform 0.3s ease;
@@ -86,14 +84,12 @@
             color: #6C757D;
         }
 
-        /* CONTEÚDO PRINCIPAL */
         .conteudo {
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        /* BOTÃO VOLTAR */
         .btn-voltar {
             display: inline-block;
             background: rgba(255, 255, 255, 0.9);
@@ -113,7 +109,6 @@
             background: white;
         }
 
-        /* HEADER DO TESTE */
         .teste-header {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             border-radius: 20px;
@@ -167,7 +162,6 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        /* CARD DE PERGUNTA */
         .pergunta-card {
             background: white;
             border-radius: 20px;
@@ -217,7 +211,6 @@
             line-height: 1.5;
         }
 
-        /* OPÇÕES */
         .opcoes {
             padding: 0 25px 20px 25px;
         }
@@ -272,7 +265,6 @@
             flex: 1;
         }
 
-        /* FEEDBACK */
         .feedback {
             padding: 0 25px 20px 25px;
             font-size: 0.9em;
@@ -294,7 +286,6 @@
             margin-top: 5px;
         }
 
-        /* BOTÕES */
         .controles {
             display: flex;
             justify-content: space-between;
@@ -338,7 +329,6 @@
             color: white;
         }
 
-        /* PROGRESSO */
         .progresso {
             background: rgba(255, 255, 255, 0.3);
             border-radius: 10px;
@@ -355,7 +345,6 @@
             border-radius: 10px;
         }
 
-        /* MODAL DO CERTIFICADO */
         .modal {
             display: none;
             position: fixed;
@@ -458,7 +447,6 @@
             margin-top: 10px;
         }
 
-        /* RESULTADO */
         .resultado {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             border-radius: 20px;
@@ -475,7 +463,6 @@
             margin: 20px 0;
         }
 
-        /* FOOTER */
         footer {
             background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;

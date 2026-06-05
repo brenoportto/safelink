@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
-/* --- RESET --- */
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +13,6 @@ body {
     padding: 10px;
 }
 
-/* --- HEADER & NAV --- */
 nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -103,7 +101,6 @@ nav ul li:hover a {
     color: white;
 }
 
-/* --- CONTEÚDO PRINCIPAL --- */
 .sobre {
     padding: 30px;
     margin-bottom: 30px;
@@ -135,7 +132,6 @@ nav ul li:hover a {
 h1.emoji{
     font-size: 4em;
 }
-/* --- CARDS GRID --- */
 .cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -197,7 +193,6 @@ h1.emoji{
 }
 
 
-/* --- FOOTER --- */
 footer {
     text-align: center;
     padding: 20px;
@@ -207,7 +202,6 @@ footer {
     border-top: 1px solid #ccc;
 }
 
-/* --- RESPONSIVIDADE (MOBILE) --- */
 @media (max-width: 768px) {
     nav {
         grid-template-columns: 1fr;

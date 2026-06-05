@@ -41,14 +41,12 @@
     </div>
 </div>
 
-<!-- Footer -->
     <footer>
     <p>Direitos reservados à: Breno Porto, Amazias Caldas e Marcelo Oliveira - Engenharia de Software IFAM- Campus Presidente FIgueiredo.</p>
     <p style="margin-top: 10px; font-size: 0.9em;">Segurança digital para todos | Aprenda | Previna | Proteja</p>
 </footer>
 
 <script>
-    // ========== BANCO DE 50 QUESTÕES ==========
     const bancoQuestoes = [
         { texto: "Você recebe uma ligação dizendo que seu WhatsApp vai ser bloqueado e pedem o código que chegou por SMS. O que você faz?", opcoes: ["Passo o código rapidinho", "Pergunto quanto tempo demora", "Desligo na hora. NUNCA compartilho códigos", "Peço para falar com o gerente"], correta: 2, explicacao: "Isso é GOLPE! Nenhuma empresa pede códigos por telefone. Esse código serve para clonar seu WhatsApp.", pegadinha: false },
         { texto: "Qual dessas opções é uma senha REALMENTE segura?", opcoes: ["123456", "data de nascimento do filho", "Meu cachorro Bob comeu meu chinelo em 1990#", "senha123"], correta: 2, explicacao: "A frase vira 'Mcbcmce1990#' - uma senha forte e fácil de lembrar!", pegadinha: false },
@@ -96,7 +94,6 @@
         { texto: "Como proteger suas fotos na nuvem?", opcoes: ["Não salvar nada", "Usar backup automático com senha forte", "Postar tudo público", "Não usar senha"], correta: 1, explicacao: "Backup com senha forte protege suas memórias.", pegadinha: false }
     ];
 
-    // Gerenciamento de Estado Global
     const AppState = {
         perguntas: [],
         respostas: [],
@@ -130,7 +127,6 @@
     function inicializarQuiz() {
         if (AppState.inicializado && !AppState.finalizado) {
             console.log("Quiz já inicializado. Ignorando chamada redundante.");
-            // return; // Comentado para permitir que o botão "Sortear novas" funcione
         }
 
         try {
@@ -150,7 +146,6 @@
             AppState.nota = 0;
             AppState.inicializado = true;
 
-            // Resetar UI
             const resultado = document.getElementById('resultado');
             const btnFinalizar = document.getElementById('btn-finalizar');
             const btnLimpar = document.getElementById('btn-limpar');
@@ -342,7 +337,6 @@
         
         const porcentagem = (AppState.nota / total) * 100;
         if (porcentagem >= 60) {
-            // Salvar dados e redirecionar para a nova página do certificado
             localStorage.setItem('safelink_nota', AppState.nota);
             localStorage.setItem('safelink_total', total);
             
@@ -353,7 +347,6 @@
         }
     }
     
-    // ========== FUNÇÕES DE TESTE (VALIDAÇÃO INTERNA) ==========
     const Tests = {
         runAll() {
             console.group("🚀 Iniciando Testes de Validação");
@@ -365,7 +358,6 @@
                 console.error("❌ Erro durante a execução dos testes:", error);
             } finally {
                 console.groupEnd();
-                // A inicialização agora acontece no final do window.onload ou diretamente
             }
         },
         testShuffle() {
@@ -388,7 +380,6 @@
         }
     };
 
-    // Inicialização
     function iniciarTudo() {
         console.log("DOM pronto. Configurando eventos...");
         
@@ -418,12 +409,10 @@
             });
         }
 
-        // Executar testes e inicializar
         Tests.runAll();
         inicializarQuiz();
     }
 
-    // Garantir que a inicialização ocorra
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
         iniciarTudo();
     } else {

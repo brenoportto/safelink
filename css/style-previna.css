@@ -12,7 +12,6 @@ margin: 20px;
 padding: 10px;
 }
 
-/* HEADER */
 header {
 background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
 border: none;
@@ -49,7 +48,6 @@ background: rgba(0, 123, 255, 0.1);
 transform: translateY(-2px);
 }
 
-/* LOGO */
 .logo {
 width: 30%;
 transition: transform 0.3s ease;
@@ -86,14 +84,12 @@ font-size: 14px;
 color: #6C757D;
 }
 
-/* CONTEÚDO PRINCIPAL */
 .conteudo {
 max-width: 1200px;
 margin: 0 auto;
 padding: 20px;
 }
 
-/* HERO SECTION */
 .hero {
 background: linear-gradient(135deg, #28A745 0%, #1e7e34 100%);
 border-radius: 15px;
@@ -115,7 +111,6 @@ opacity: 0.95;
 font-style: italic;
 }
 
-/* BOTÃO VOLTAR */
 .btn-voltar {
 display: inline-block;
 background: linear-gradient(135deg, #28A745 0%, #1e7e34 100%);
@@ -134,7 +129,6 @@ transform: translateY(-2px);
 box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* CARDS DE AULAS */
 .aula-card {
 background: white;
 border-radius: 20px;
@@ -189,7 +183,6 @@ color: #333;
 margin-bottom: 15px;
 }
 
-/* PASSO A PASSO - CHECKLIST */
 .checklist {
 list-style: none;
 padding: 0;
@@ -231,7 +224,6 @@ color: #4ECDC4;
 font-size: 1.1em;
 }
 
-/* CAIXAS DE TUTORIAL */
 .tutorial-box {
 background: #f0f8ff;
 border-radius: 15px;
@@ -251,7 +243,6 @@ margin-left: 25px;
 line-height: 1.8;
 }
 
-/* GRID DE CONFIGURAÇÕES */
 .config-grid {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -287,7 +278,6 @@ line-height: 1.6;
 margin: 8px 0;
 }
 
-/* DICAS E ALERTAS */
 .dica-box {
 background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
 border-radius: 15px;
@@ -306,7 +296,6 @@ margin-bottom: 10px;
 margin-bottom: 0;
 }
 
-/* CONTAINER DE VÍDEO */
 .video-container {
 position: relative;
 padding-bottom: 56.25%;
@@ -357,7 +346,6 @@ font-size: 1.2em;
 margin-bottom: 10px;
 }
 
-/* GRID DE HÁBITOS */
 .habitos-grid {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -394,7 +382,6 @@ font-size: 0.9em;
 color: #555;
 }
 
-/* Tabela de Anotações */
 .anotacao-box {
 background: #FFF9C4;
 border-radius: 15px;
@@ -429,7 +416,6 @@ color: #999;
 font-style: italic;
 }
 
-/* FOOTER */
 footer {
 background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
 color: white;
@@ -439,7 +425,6 @@ margin-top: 40px;
 border-radius: 15px;
 }
 
-/* RESPONSIVIDADE */
 @media (max-width: 768px) {
 header {
     grid-template-columns: 1fr;

@@ -12,7 +12,6 @@
             padding: 10px;
         }
 
-        /* HEADER */
         header {
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
             border: none;
@@ -49,7 +48,6 @@
             transform: translateY(-2px);
         }
 
-        /* LOGO */
         .logo {
             width: 30%;
             transition: transform 0.3s ease;
@@ -86,14 +84,12 @@
             color: #6C757D;
         }
 
-        /* CONTEÚDO PRINCIPAL */
         .conteudo {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        /* HERO SECTION */
         .hero {
             background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
             border-radius: 15px;
@@ -115,7 +111,6 @@
             font-style: italic;
         }
 
-        /* BOTÃO VOLTAR */
         .btn-voltar {
             display: inline-block;
             background: linear-gradient(135deg, #DC3545 0%, #a71d2a 100%);
@@ -134,7 +129,6 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* CARDS DE AULAS */
         .aula-card {
             background: white;
             border-radius: 20px;
@@ -189,7 +183,6 @@
             margin-bottom: 15px;
         }
 
-        /* PASSO A PASSO - EMERGÊNCIA */
         .emergencia-passo {
             background: linear-gradient(135deg, #FFF5F5 0%, #FFE0E0 100%);
             border-radius: 15px;
@@ -209,7 +202,6 @@
             content: "⚠️ ";
         }
 
-        /* TABELA DE CONTATOS */
         .tabela-contatos {
             width: 100%;
             border-collapse: separate;
@@ -236,7 +228,6 @@
             background: #f5f5f5;
         }
 
-        /* GRID DE BANCOS */
         .bancos-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -269,7 +260,6 @@
             font-size: 1em;
         }
 
-        /* CAIXA DE OPERADORAS */
         .operadoras-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -303,7 +293,6 @@
             color: #ffffff;
         }
 
-        /* GRID DE RECUPERAÇÃO */
         .recuperacao-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -335,7 +324,6 @@
             line-height: 1.6;
         }
 
-        /* CONTAINER DE VÍDEO */
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
@@ -376,7 +364,6 @@
             margin: 8px 0;
         }
 
-        /* CAIXA DO MED */
         .med-box {
             background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
             border-radius: 15px;
@@ -406,7 +393,6 @@
             margin-bottom: 10px;
         }
 
-        /* CAIXA EMOCIONAL */
         .emocional-box {
             background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%);
             border-radius: 15px;
@@ -433,7 +419,6 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
-        /* CAIXA DE REFORÇO */
         .reforco-box {
             background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
             border-radius: 15px;
@@ -448,7 +433,6 @@
             margin-bottom: 10px;
         }
 
-        /* FOOTER */
         footer {
             background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;
@@ -458,7 +442,6 @@
             border-radius: 15px;
         }
 
-        /* RESPONSIVIDADE */
         @media (max-width: 768px) {
             header {
                 grid-template-columns: 1fr;
