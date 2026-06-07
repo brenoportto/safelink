@@ -4,6 +4,7 @@
     <title>SAFELINK - APRENDA | Segurança Digital para Todos</title>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style-aprenda.css">
+    <link rel="stylesheet" href="css/video-player.css">
 </head>
 
 <body>
@@ -21,10 +22,20 @@
             <h2><span>Aula 1</span> <span class="numero-aula">O que é Segurança Digital?</span></h2>
         </div>
         <div class="aula-body">
-            <div class="video-container">
-                <div class="video-placeholder">
-                    <span><strong>Espaço para Vídeo Aula 1</strong></span>
-                    <p>Insira o link do YouTube no iframe quando disponível</p>
+            <div class="video-player" data-video-player
+                 data-src720p="video/video-aula-1-720p.mp4"
+                 data-src1080p="video/video-aula-1-1080p.mp4"
+                 data-default-quality="720p">
+                <div class="video-container">
+                    <video controls playsinline preload="metadata"
+                           src="video/video-aula-1-720p.mp4">
+                        <track kind="subtitles" src="video/video-aula-1.vtt" srclang="pt-BR" label="Português" default>
+                        Seu navegador não suporta reprodução de vídeo.
+                    </video>
+                </div>
+                <div class="video-toolbar">
+                    <label for="qualidade-aula-1">Qualidade:</label>
+                    <select id="qualidade-aula-1" class="video-quality-select" aria-label="Selecionar qualidade do vídeo"></select>
                 </div>
             </div>
 
@@ -212,5 +223,5 @@
     <p style="margin-top: 10px; font-size: 0.9em;">Segurança digital para todos | Aprenda | Previna | Proteja</p>
 </footer>
 
-
+<script src="js/video-player.js"></script>
 </body></html>
