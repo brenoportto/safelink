@@ -471,10 +471,35 @@
             margin-top: 40px;
         }
 
+        @media (max-width: 1024px) {
+            header {
+                margin: 15px;
+                padding: 15px 20px;
+            }
+
+            .conteudo {
+                padding: 15px;
+            }
+
+            .teste-header {
+                padding: 30px 20px;
+            }
+
+            .teste-header h1 {
+                font-size: 2em;
+            }
+
+            .safe, .logo-safe {
+                font-size: 30px;
+            }
+        }
+
         @media (max-width: 768px) {
             header {
                 grid-template-columns: 1fr;
                 text-align: center;
+                margin: 10px;
+                padding: 15px;
             }
             
             .logo-container {
@@ -482,8 +507,16 @@
                 margin-bottom: 20px;
             }
             
+            .teste-header {
+                padding: 25px 15px;
+            }
+
             .teste-header h1 {
                 font-size: 1.5em;
+            }
+
+            .teste-header p {
+                font-size: 1em;
             }
             
             .controles {
@@ -493,6 +526,18 @@
             .controles .btn {
                 width: 100%;
             }
+
+            .pergunta-texto {
+                padding: 15px 20px 10px 20px;
+            }
+
+            .opcoes {
+                padding: 0 20px 15px 20px;
+            }
+
+            .feedback {
+                padding: 0 20px 15px 20px;
+            }
             
             nav ul li {
                 margin: 0 8px;
@@ -500,5 +545,100 @@
             
             nav ul li a {
                 font-size: 100%;
+                padding: 8px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                margin: 5px;
+                padding: 12px;
+            }
+
+            .conteudo {
+                padding: 10px 5px;
+            }
+
+            .safe, .logo-safe {
+                font-size: 26px;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 4px 0;
+            }
+
+            .teste-header {
+                padding: 20px 12px;
+                border-radius: 15px;
+            }
+
+            .teste-header h1 {
+                font-size: 1.3em;
+            }
+
+            .pergunta-header {
+                padding: 12px 15px;
+            }
+
+            .pergunta-header h3 {
+                font-size: 1em;
+            }
+
+            .pergunta-texto {
+                padding: 12px 15px 8px 15px;
+                font-size: 0.95em;
+            }
+
+            .opcoes {
+                padding: 0 15px 12px 15px;
+            }
+
+            .opcao {
+                padding: 10px 12px;
+                gap: 10px;
+            }
+
+            .opcao-letter {
+                width: 26px;
+                height: 26px;
+                font-size: 0.9em;
+            }
+
+            .feedback {
+                padding: 0 15px 12px 15px;
+            }
+
+            .modal-content {
+                padding: 20px 15px;
+            }
+
+            .certificado {
+                padding: 15px;
+                border-width: 5px;
+            }
+
+            .certificado h2 {
+                font-size: 1.4em;
+            }
+
+            .certificado .nome {
+                font-size: 1.5em;
+            }
+
+            .certificado .nota {
+                font-size: 1.2em;
+            }
+
+            .pontuacao {
+                font-size: 2.2em;
+            }
+
+            .resultado {
+                padding: 20px 15px;
+            }
+
+            footer {
+                padding: 18px 12px;
             }
         }
