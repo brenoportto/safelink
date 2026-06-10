@@ -132,7 +132,7 @@ box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .aula-header {
-background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
 padding: 20px 30px;
 color: white;
 }
@@ -240,7 +240,7 @@ margin-bottom: 0;
 }
 
 .regras-box {
-background: linear-gradient(135deg, #4ECDC4 0%, #556270 100%);
+background: linear-gradient(135deg, #007BFF 0%, #41081d 100%);
 color: white;
 border-radius: 15px;
 padding: 20px;
@@ -328,7 +328,7 @@ margin: 15px 0;
 
 .btn-voltar {
 display: inline-block;
-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
 color: white;
 text-decoration: none;
 padding: 12px 30px;
